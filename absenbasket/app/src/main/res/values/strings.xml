@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Asbensi Latihan Rutin BYTE</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hallo Po</string>
+    <string name="title_activity_my_account">MyAccount</string>
+
+</resources>
