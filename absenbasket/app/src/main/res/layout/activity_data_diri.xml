@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DataDiri">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/txt_namaDataDiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama"/>
+    <TextView
+        android:id="@+id/txt_ttlDataDiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempat, Tanggal Lahir"
+        android:layout_below="@+id/txt_namaDataDiri"/>
+    <TextView
+        android:id="@+id/txt_jkDataDiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kelamin"
+        android:layout_below="@+id/txt_ttlDataDiri"/>
+    <TextView
+        android:id="@+id/txt_posisiDataDiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Posisi"
+        android:layout_below="@+id/txt_jkDataDiri"/>
+    <TextView
+        android:id="@+id/txt_thnmskDataDiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tahun masuk"
+        android:layout_below="@+id/txt_posisiDataDiri"/>
+
+    <LinearLayout
+        android:id="@+id/lnr_rekapDataDiri"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/txt_thnmskDataDiri"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="70dp">
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_closeDataDiri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
