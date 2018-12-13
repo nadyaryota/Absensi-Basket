@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TambahAbsen"
-    android:orientation="vertical">
+    tools:context=".TambahAbsen">
 
     <EditText
         android:id="@+id/edit_tanggal"
@@ -13,17 +12,11 @@
         android:layout_height="wrap_content"
         android:text="Tanggal"/>
 
-    <LinearLayout
-        android:id="@+id/lnr_tabelAbsen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignEnd="@id/edit_tanggal">
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_below="@+id/edit_tanggal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,29 +26,28 @@
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown">
+                android:spinnerMode="dropdown"
+                >
             </Spinner>
 
         </LinearLayout>
-
-    </LinearLayout>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:layout_alignEnd="@id/lnr_tabelAbsen">
+        android:layout_centerHorizontal="true">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"/>
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back" />
         <Button
             android:id="@+id/btn_saveTambahAbsn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="save"
-            android:textAlignment="viewEnd"
             />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

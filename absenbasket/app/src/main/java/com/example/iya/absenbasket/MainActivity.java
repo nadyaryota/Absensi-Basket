@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             pDialog.dismiss();
             if (success.equals("1")) {
-                a = new Intent(MainActivity.this, MyAccount.class);
+                a = new Intent(MainActivity.this, Menu.class);
                 startActivity(a);
                 finish();
             } else {
