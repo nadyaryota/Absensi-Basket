@@ -9,10 +9,9 @@
 
     <Button
         android:id="@+id/btn_closeDaftarAnggota"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="close"
-        android:layout_alignParentRight="true"/>
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@drawable/back"/>
 
     <ListView
         android:id="@+id/list_daftarAnggota"
