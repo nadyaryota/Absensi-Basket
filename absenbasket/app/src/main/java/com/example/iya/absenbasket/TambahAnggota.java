@@ -18,6 +18,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -41,7 +43,7 @@ public class TambahAnggota extends AppCompatActivity {
 
         dropdown = findViewById(R.id.spinnerPosisi);
 //create a list of items for the spinner.
-        String[] items = new String[]{"Point Guard", "Shooting Guard", "Small Foward", "Center"};
+        String[] items = new String[]{"Point Guard", "Shooting Guard", "Small Foward", "Power Forward" , "Center"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -57,24 +59,32 @@ public class TambahAnggota extends AppCompatActivity {
         saveAnggota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nama = editNama.getText().toString();
-                String ttl = editTtl.getText().toString();
-                String posisi = dropdown.getSelectedItem().toString();
-                String tahunMsk = editTahunmsk.getText().toString();
-
+                String nama = encodeUrl(editNama.getText().toString());
+                String ttl = encodeUrl(editTtl.getText().toString());
+                String posisi = encodeUrl(dropdown.getSelectedItem().toString());
+                String tahunMsk = encodeUrl(editTahunmsk.getText().toString());
                 //Radio terpilih
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 radioButton = (RadioButton) findViewById(selectedId);
-                String jk = radioButton.getText().toString();
+                String jk = encodeUrl(radioButton.getText().toString());
+                url = "http://192.168.1.156/absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
 
-
+                Log.d("Nadya", "onClick: "+url);
                 new Tambah().execute();
 
             }
         });
 
     }
+    String encodeUrl(String value){
+        try {
+            return URLEncoder.encode(value,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return value;
+        }
 
+    }
 
     String url, success;
     public class Tambah extends AsyncTask<String, String, String>
@@ -99,17 +109,8 @@ public class TambahAnggota extends AppCompatActivity {
             try {
                 success = json.getString("success");
                 Log.e("error", "nilai sukses=" + success);
-                JSONArray hasil = json.getJSONArray("login");
-                if (success.equals("1")) {
-                    for (int i = 0; i < hasil.length(); i++) {
-                        JSONObject c = hasil.getJSONObject(i);
-                        String nama = c.getString("nama").trim();
-                        String username = c.getString("username").trim();
-                        Log.e("ok", " ambil data");
-                    }
-                } else {
-                    Log.e("erro", "tidak bisa ambil data 0");
-                }
+
+
             } catch (Exception e) {
 
                 Log.e("erro", "tidak bisa ambil data 1");

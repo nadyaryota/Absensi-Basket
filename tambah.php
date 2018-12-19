@@ -10,14 +10,14 @@
 VALUES ('{$nama}', '{$ttl}', '{$jk}', '{$posisi}', '{$angkatan}')";
 
 if (mysqli_query($con, $sql)) {
-   $response['sukses'] = '1';
+   $response['success'] = '1';
    
    $json = json_encode($response);
    print_r($json);
    
    // echo "New record created successfully";
 } else {
-	$response['sukses'] = '0';
+	$response['success'] = '0';
    // echo "Error: " . $sql . "<br>" . mysqli_error($con);
 }
 
