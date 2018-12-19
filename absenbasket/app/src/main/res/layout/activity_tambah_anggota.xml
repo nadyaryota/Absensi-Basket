@@ -47,14 +47,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jenis Kelamin"/>
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/radioL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="L"/>
         <RadioButton
+            android:id="@+id/radioP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="P"/>
+        </RadioGroup>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

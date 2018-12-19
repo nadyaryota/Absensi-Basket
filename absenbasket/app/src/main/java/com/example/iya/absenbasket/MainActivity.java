@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
     Intent a;
     EditText username, password;
     String url, success;
+    View viewku;
     SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,9 @@ public class MainActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
-                url =
-                        "http://10.0.2.2/login/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
+            public void onClick(final View v) {
+                viewku = v;
+                url = "http://192.168.1.156/absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
                 if
                         (username.getText().toString().trim().length() > 0 && password.getText().toString().trim().length() > 0)
                 {
@@ -54,8 +55,7 @@ public class MainActivity extends Activity {
             }
         });
     }
-    public class Masuk extends AsyncTask<String, String,
-            String>
+    public class Masuk extends AsyncTask<String, String, String>
     {
         ArrayList<HashMap<String, String>> contactList = new
                 ArrayList<HashMap<String, String>>();
@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             pDialog.dismiss();
             if (success.equals("1")) {
-                a = new Intent(MainActivity.this, Menu.class);
+                a = new Intent(viewku.getContext(), MainMenu.class);
                 startActivity(a);
                 finish();
             } else {
