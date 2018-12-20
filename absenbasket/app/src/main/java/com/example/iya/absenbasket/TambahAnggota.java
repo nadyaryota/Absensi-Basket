@@ -47,7 +47,7 @@ public class TambahAnggota extends AppCompatActivity {
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
+        //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -131,5 +131,11 @@ public class TambahAnggota extends AppCompatActivity {
                         "Username/password salah gan.!!", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void saveTambahAnggota(View v){
+        Intent save = new Intent(this, DaftarAnggota.class);
+
+        startActivity(save);
     }
 }

@@ -92,10 +92,12 @@
             android:layout_width="150dp"
             android:layout_height="50dp"/>
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_saveTambahAnggota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"/>
+        android:onClick="saveTambahAnggota"
+        android:text="Save" />
 
 </LinearLayout>

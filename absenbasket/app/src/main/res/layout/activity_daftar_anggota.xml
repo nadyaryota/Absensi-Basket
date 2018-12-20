@@ -11,7 +11,8 @@
         android:id="@+id/btn_closeDaftarAnggota"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:background="@drawable/back"/>
+        android:background="@drawable/back"
+        android:onClick="backDaftarAnggota" />
 
     <ListView
         android:id="@+id/list_daftarAnggota"

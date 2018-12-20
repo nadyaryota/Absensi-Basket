@@ -40,18 +40,21 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true">
+
         <Button
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:layout_marginRight="150dp"/>
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="150dp"
+            android:onClick="backButton"
+            android:text="Back" />
+
         <Button
             android:id="@+id/btn_saveTambahAbsn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="save"
-            />
+            android:onClick="saveButton"
+            android:text="save" />
     </LinearLayout>
 
 </RelativeLayout>

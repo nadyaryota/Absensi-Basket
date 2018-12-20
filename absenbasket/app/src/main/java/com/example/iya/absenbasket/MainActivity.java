@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+    public static final String MyPREFERENCES = "MyPrefs" ;
     Button login;
     Intent a;
     EditText username, password;
