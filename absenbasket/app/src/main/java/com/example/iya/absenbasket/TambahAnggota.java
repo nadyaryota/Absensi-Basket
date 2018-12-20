@@ -67,7 +67,7 @@ public class TambahAnggota extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 radioButton = (RadioButton) findViewById(selectedId);
                 String jk = encodeUrl(radioButton.getText().toString());
-                url = "http://192.168.1.156/absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+                url = "http://192.168.1.185/absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
 
                 Log.d("Nadya", "onClick: "+url);
                 new Tambah().execute();

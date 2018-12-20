@@ -59,7 +59,9 @@ public class MainMenu extends AppCompatActivity {
         editor.clear();
         editor.commit();
         moveTaskToBack(true);
-        MainMenu.this.finish();
+        Intent out = new Intent(this, MainActivity.class);
+        startActivity(out);
+        finish();
     }
 }
 
