@@ -6,34 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".TambahAbsen">
 
-    <EditText
-        android:id="@+id/edit_tanggal"
+    <LinearLayout
+        android:id="@+id/lnr_tanggalAbsensi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tanggal"/>
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-
+        <TextView
+            android:id="@+id/txt_tanggal"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/edit_tanggal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Desy"/>
+            android:text="Tanggal : "
+            android:layout_marginBottom="25dp"/>
+        <TextView
+            android:id="@+id/txt_isitanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="27 Januari 2018"/>
+    </LinearLayout>
 
-            <Spinner
-                android:id="@+id/spinner"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:layout_height="match_parent"
+                 />
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                >
-
-            </Spinner>
-
-        </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

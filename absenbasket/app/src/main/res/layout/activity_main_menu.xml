@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenu">
+    tools:context=".MainMenu"
+    android:background="@drawable/back_bola">
 
     <Button
         android:id="@+id/btn_logout"
@@ -17,8 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/btn_logout"
-        >
+        android:layout_below="@+id/btn_logout">
 
         <Button
             android:id="@+id/btn_tambahAbsen"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="historyAbsen"
-            android:text="Histori" />
+            android:text="Histori"/>
 
         <Button
             android:id="@+id/btn_tambahAnggota"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="tambahAnggota"
-            android:text="Tambah Anggota" />
+            android:text="Tambah Anggota"/>
 
         <Button
             android:id="@+id/btn_daftarAnggota"
@@ -50,7 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="daftarAnggota"
-            android:text="Daftar Anggota" />
+            android:text="Daftar Anggota"/>
+
     </LinearLayout>
 
 </RelativeLayout>

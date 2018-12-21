@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/recycler_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:layout_weight="3"/>
+
+    <Spinner
+        android:id="@+id/recycler_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_weight="1">
+
+    </Spinner>
+
+    <EditText
+        android:id="@+id/recycler_alasan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Alasan"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>

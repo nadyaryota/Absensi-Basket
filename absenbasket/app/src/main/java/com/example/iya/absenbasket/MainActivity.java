@@ -48,12 +48,15 @@ public class MainActivity extends Activity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
 
+        username.setText("adminjuned");
+        password.setText("1");
+
         login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(final View v) {
                 viewku = v;
-                url = "http://192.168.1.156/absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
+                url = "http://192.168.1.202/absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
                 if
                         (username.getText().toString().trim().length() > 0 && password.getText().toString().trim().length() > 0)
                 {
