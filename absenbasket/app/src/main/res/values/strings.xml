@@ -4,4 +4,7 @@
     <string name="hello_world">Hallo Po</string>
     <string name="title_activity_my_account">MyAccount</string>
 
+    <string-array name="anggota_array">
+    <item>Aisyah</item>
+    </string-array>
 </resources>

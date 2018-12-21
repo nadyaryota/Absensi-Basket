@@ -13,12 +13,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+
+
+
     public static final String MyPREFERENCES = "MyPrefs" ;
     Button login;
     Intent a;
@@ -27,9 +33,13 @@ public class MainActivity extends Activity {
     View viewku;
     SessionManager session;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
         session = new SessionManager(getApplicationContext());
         Toast.makeText(getApplicationContext(),
                 "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
@@ -43,7 +53,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(final View v) {
                 viewku = v;
-                url = "http://192.168.1.185/absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
+                url = "http://192.168.1.156/absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
                 if
                         (username.getText().toString().trim().length() > 0 && password.getText().toString().trim().length() > 0)
                 {
@@ -56,6 +66,8 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+
     public class Masuk extends AsyncTask<String, String, String>
     {
         ArrayList<HashMap<String, String>> contactList = new

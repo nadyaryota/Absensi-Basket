@@ -15,7 +15,7 @@
         android:onClick="backDaftarAnggota" />
 
     <ListView
-        android:id="@+id/list_daftarAnggota"
+        android:id="@+id/listv_daftarAnggota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_closeDaftarAnggota">
