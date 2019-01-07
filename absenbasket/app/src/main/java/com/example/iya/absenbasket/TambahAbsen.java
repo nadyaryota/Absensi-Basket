@@ -65,7 +65,7 @@ public class TambahAbsen extends AppCompatActivity {
         recyclerView.setAdapter(aAdapter);
         //prepareAnggotaData();
         //viewku = getApplicationContext();
-        url = "http://192.168.1.202/absenbasket/tampil.php";
+        url = Konstanta.BASE_URL+"absenbasket/tampil.php";
         new ViewPlayer().execute();
     }
 

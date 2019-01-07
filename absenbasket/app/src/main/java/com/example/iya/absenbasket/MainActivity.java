@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(final View v) {
                 viewku = v;
-                url = "http://192.168.1.202/absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
+                url = Konstanta.BASE_URL+"absenbasket/login.php?" + "username=" + username.getText().toString() + "&password=" + password.getText().toString();
                 if
                         (username.getText().toString().trim().length() > 0 && password.getText().toString().trim().length() > 0)
                 {
