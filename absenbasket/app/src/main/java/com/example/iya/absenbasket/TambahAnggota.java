@@ -28,7 +28,8 @@ public class TambahAnggota extends AppCompatActivity {
     EditText editNama, editTtl, editTahunmsk ;
     RadioButton radioL, radioP;
     Spinner dropdown;
-
+    String aksi ="";
+    Anggota anggota ;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     @Override
@@ -36,7 +37,6 @@ public class TambahAnggota extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_anggota);
         //get the spinner from the xml.
-
         editNama = findViewById(R.id.edt_nama);
         editTtl = findViewById(R.id.edt_ttl);
         editTahunmsk = findViewById(R.id.edt_thnMasuk);
@@ -51,6 +51,18 @@ public class TambahAnggota extends AppCompatActivity {
         dropdown.setAdapter(adapter);
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        if(getIntent()!=null){
+            aksi  = getIntent().getStringExtra("aksi");
+            int index = getIntent().getIntExtra("index_anggota",-1);
+            anggota = DaftarAnggota.listAnggota.get(index);
+            if(aksi.equals("edit")){
+                editNama.setText(anggota.nama);
+                editTtl.setText(anggota.ttl);
+                editTahunmsk.setText(anggota.angkatan);
+
+            }
+        }
+
 
 
         saveAnggota = findViewById(R.id.btn_saveTambahAnggota);
@@ -67,7 +79,13 @@ public class TambahAnggota extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 radioButton = (RadioButton) findViewById(selectedId);
                 String jk = encodeUrl(radioButton.getText().toString());
-                url = "http://192.168.1.202/absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+
+                if(aksi.equals("edit")){
+                    url = Konstanta.BASE_URL+"absenbasket/edit.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+                }else{
+                    url = Konstanta.BASE_URL+"absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+                }
+
 
                 Log.d("Nadya", "onClick: "+url);
                 new Tambah().execute();

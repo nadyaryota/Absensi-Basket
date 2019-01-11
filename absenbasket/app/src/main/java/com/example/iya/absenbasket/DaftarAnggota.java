@@ -21,6 +21,7 @@ import java.util.HashMap;
 public class DaftarAnggota extends AppCompatActivity  implements AdapterView.OnItemClickListener{
     ListView viewAnggota;
 	ArrayList<String> listNama = new ArrayList<String>();
+	public static ArrayList<Anggota> listAnggota = new ArrayList<>();
     ArrayAdapter adapter;
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -31,7 +32,7 @@ public class DaftarAnggota extends AppCompatActivity  implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_anggota);
-		url = Konstanta.BASE_URL+"absenbasket/seluruh_anggota.php";
+		url = Konstanta.BASE_URL+"absenbasket/viewMember.php";
         new seluruhPlayer().execute();
         //Log.d("iya",String.valueOf(R.array.anggota_array));
         //String[] listNama ={"Nadya"};
@@ -39,6 +40,15 @@ public class DaftarAnggota extends AppCompatActivity  implements AdapterView.OnI
         adapter = new ArrayAdapter(getApplicationContext(),R.layout.simple_list,listNama);
         ListView listview = (ListView) findViewById(R.id.listv_daftarAnggota) ;
         listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent pindah = new Intent(getApplicationContext(),TambahAnggota.class);
+                pindah.putExtra("index_anggota",position);
+                pindah.putExtra("aksi","edit");
+                startActivity(pindah);
+            }
+        });
 
     }
 
@@ -46,8 +56,7 @@ public class DaftarAnggota extends AppCompatActivity  implements AdapterView.OnI
     String success="";
     public class seluruhPlayer extends AsyncTask<String, String, String>
     {
-        ArrayList<HashMap<String, String>> contactList = new
-                ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> contactList = new ArrayList<HashMap<String, String>>();
         ProgressDialog pDialog;
         @Override
         protected void onPreExecute() {
@@ -72,12 +81,18 @@ public class DaftarAnggota extends AppCompatActivity  implements AdapterView.OnI
                         JSONObject c = hasil.getJSONObject(i);
                         String nama, posisi, jk, ttl;
                         Integer angkatan;
+                        int id;
+                        id = c.getInt("id");
                         nama = c.getString("nama");
                         Log.e("Tiwi", "doInBackground: "+nama );
                         posisi = c.getString("posisi");
                         jk = c.getString("jk");
                         ttl = c.getString("ttl");
                         angkatan = c.getInt("angkatan");
+
+                        Anggota anggota = new Anggota(nama,posisi,jk,ttl,angkatan);
+                        anggota.id = id;
+                        listAnggota.add(anggota);
 						listNama.add(nama);
                         //Anggota angg = new Anggota(nama,posisi,jk,ttl,angkatan);
                         //anggotaList.add(angg);

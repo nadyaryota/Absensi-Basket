@@ -2,7 +2,7 @@ package com.example.iya.absenbasket;
 
 public class Anggota {
     String nama, posisi, jk, ttl;
-    Integer angkatan;
+    Integer angkatan,id;
     public Anggota(){
 
     }
