@@ -73,8 +73,7 @@ public class MainActivity extends Activity {
 
     public class Masuk extends AsyncTask<String, String, String>
     {
-        ArrayList<HashMap<String, String>> contactList = new
-                ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> contactList = new ArrayList<HashMap<String, String>>();
         ProgressDialog pDialog;
         @Override
         protected void onPreExecute() {

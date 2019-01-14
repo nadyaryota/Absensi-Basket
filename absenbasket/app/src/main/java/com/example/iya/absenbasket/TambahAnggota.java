@@ -28,7 +28,8 @@ public class TambahAnggota extends AppCompatActivity {
     EditText editNama, editTtl, editTahunmsk ;
     RadioButton radioL, radioP;
     Spinner dropdown;
-
+    String aksi ="";
+    Anggota anggota ;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     @Override
@@ -47,14 +48,47 @@ public class TambahAnggota extends AppCompatActivity {
         dropdown.setAdapter(adapter);
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioP = findViewById(R.id.radioP);
+        radioL = findViewById(R.id.radioL);
         if(getIntent()!=null){
             aksi  = getIntent().getStringExtra("aksi");
             int index = getIntent().getIntExtra("index_anggota",-1);
-            anggota = DaftarAnggota.listAnggota.get(index);
-            if(aksi.equals("edit")){
+            if(index!=-1) anggota = DaftarAnggota.listAnggota.get(index);
+            if(aksi!=null) if(aksi.equals("edit")){
+                editTahunmsk = findViewById(R.id.edt_thnMasuk);
                 editNama.setText(anggota.nama);
                 editTtl.setText(anggota.ttl);
-                editTahunmsk.setText(anggota.angkatan);
+                editTahunmsk.setText(anggota.angkatan+"");
+                if(anggota.jk.equals("L"))
+                    radioL.setChecked(true);
+                else
+                    radioP.setChecked(true);
+
+                switch (anggota.posisi){
+
+                    case "Point Guard" : {
+                        dropdown.setSelection(0);
+                        break;
+                    }
+                    case "Shooting Guard" : {
+                        dropdown.setSelection(1);
+                        break;
+                    }
+                    case "Small Foward" : {
+                        dropdown.setSelection(2);
+                        break;
+                    }
+                    case "Power Forward" : {
+                        dropdown.setSelection(3);
+                        break;
+                    }
+                    case "Center" : {
+                        dropdown.setSelection(4);
+                        break;
+                    }
+
+                }
+
 
             }
         }
@@ -75,7 +109,14 @@ public class TambahAnggota extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 radioButton = (RadioButton) findViewById(selectedId);
                 String jk = encodeUrl(radioButton.getText().toString());
-                url = "http://192.168.1.121/absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+
+                if(aksi!=null){
+                    if(aksi.equals("edit")) url = Konstanta.BASE_URL+"absenbasket/edit.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk+"&id="+anggota.id ;
+                    else url = Konstanta.BASE_URL+"absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+                }else{
+                    url = Konstanta.BASE_URL+"absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
+                }
+
 
                 Log.d("Nadya", "onClick: "+url);
                 new Tambah().execute();
@@ -131,7 +172,7 @@ public class TambahAnggota extends AppCompatActivity {
             super.onPostExecute(result);
             pDialog.dismiss();
             if (success.equals("1")) {
-                Intent a = new Intent(getApplicationContext(), MainMenu.class);
+                Intent a = new Intent(getApplicationContext(), DaftarAnggota.class);
                 startActivity(a);
                 finish();
             } else {
@@ -145,5 +186,6 @@ public class TambahAnggota extends AppCompatActivity {
         Intent save = new Intent(this, DaftarAnggota.class);
 
         startActivity(save);
+        finish();
     }
 }

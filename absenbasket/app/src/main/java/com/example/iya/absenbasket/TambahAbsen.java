@@ -99,8 +99,7 @@ public class TambahAbsen extends AppCompatActivity {
     }
     public class ViewPlayer extends AsyncTask<String, String, String>
     {
-        ArrayList<HashMap<String, String>> contactList = new
-                ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> contactList = new ArrayList<HashMap<String, String>>();
         ProgressDialog pDialog;
         @Override
         protected void onPreExecute() {

@@ -42,7 +42,8 @@ public class MainMenu extends AppCompatActivity {
 
     public void tambahAnggota(View v) {
         Intent tmbAnggota = new Intent(this, TambahAnggota.class);
-
+        tmbAnggota.putExtra("index_anggota",-1);
+        tmbAnggota.putExtra("aksi","tambah");
         startActivity(tmbAnggota);
     }
 
@@ -53,8 +54,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void logout(View v) {
-        SharedPreferences sharedpreferences = getSharedPreferences
-                (MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.clear();
         editor.commit();
