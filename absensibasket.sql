@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-01-14 16:29:51
+Date: 2019-01-14 16:33:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,7 +76,7 @@ CREATE TABLE `riwayat_latihan` (
   CONSTRAINT `fk_id` FOREIGN KEY (`id_sesi`) REFERENCES `sesilatihan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_kehadiran` FOREIGN KEY (`id_kehadiran`) REFERENCES `kehadiran` (`id_kehadiran`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_player` FOREIGN KEY (`id_player`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of riwayat_latihan
@@ -135,6 +135,27 @@ INSERT INTO `riwayat_latihan` VALUES ('67', '40', '16', '', '1');
 INSERT INTO `riwayat_latihan` VALUES ('68', '40', '17', '', '1');
 INSERT INTO `riwayat_latihan` VALUES ('69', '40', '18', '', '1');
 INSERT INTO `riwayat_latihan` VALUES ('70', '40', '19', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('71', '41', '13', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('72', '41', '14', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('73', '41', '15', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('74', '41', '16', 'serib', '1');
+INSERT INTO `riwayat_latihan` VALUES ('75', '41', '17', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('76', '41', '18', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('77', '41', '19', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('78', '41', '13', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('79', '41', '14', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('80', '41', '15', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('81', '41', '16', 'serib', '1');
+INSERT INTO `riwayat_latihan` VALUES ('82', '41', '17', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('83', '41', '18', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('84', '41', '19', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('85', '41', '13', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('86', '41', '14', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('87', '41', '15', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('88', '41', '16', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('89', '41', '17', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('90', '41', '18', '', '1');
+INSERT INTO `riwayat_latihan` VALUES ('91', '41', '19', '', '1');
 
 -- ----------------------------
 -- Table structure for sesilatihan
@@ -147,7 +168,7 @@ CREATE TABLE `sesilatihan` (
   `jam` time(6) DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of sesilatihan
@@ -182,6 +203,7 @@ INSERT INTO `sesilatihan` VALUES ('37', 'Monday', '2019-01-14', '10:05:43.000000
 INSERT INTO `sesilatihan` VALUES ('38', 'Monday', '2019-01-14', '10:13:35.000000', null);
 INSERT INTO `sesilatihan` VALUES ('39', 'Monday', '2019-01-14', '10:18:14.000000', null);
 INSERT INTO `sesilatihan` VALUES ('40', 'Monday', '2019-01-14', '15:11:08.000000', null);
+INSERT INTO `sesilatihan` VALUES ('41', 'Monday', '2019-01-14', '16:32:36.000000', null);
 
 -- ----------------------------
 -- Table structure for user
