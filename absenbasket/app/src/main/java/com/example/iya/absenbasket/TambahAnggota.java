@@ -28,8 +28,7 @@ public class TambahAnggota extends AppCompatActivity {
     EditText editNama, editTtl, editTahunmsk ;
     RadioButton radioL, radioP;
     Spinner dropdown;
-    String aksi ="";
-    Anggota anggota ;
+
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     @Override
@@ -42,10 +41,7 @@ public class TambahAnggota extends AppCompatActivity {
         editTahunmsk = findViewById(R.id.edt_thnMasuk);
 
         dropdown = findViewById(R.id.spinnerPosisi);
-//create a list of items for the spinner.
         String[] items = new String[]{"Point Guard", "Shooting Guard", "Small Foward", "Power Forward" , "Center"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
@@ -79,13 +75,7 @@ public class TambahAnggota extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 radioButton = (RadioButton) findViewById(selectedId);
                 String jk = encodeUrl(radioButton.getText().toString());
-
-                if(aksi.equals("edit")){
-                    url = Konstanta.BASE_URL+"absenbasket/edit.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
-                }else{
-                    url = Konstanta.BASE_URL+"absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
-                }
-
+                url = "http://192.168.1.121/absenbasket/tambah.php?" + "nama=" + nama + "&ttl=" + ttl + "&posisi=" + posisi + "&angkatan=" + tahunMsk + "&jk=" + jk ;
 
                 Log.d("Nadya", "onClick: "+url);
                 new Tambah().execute();

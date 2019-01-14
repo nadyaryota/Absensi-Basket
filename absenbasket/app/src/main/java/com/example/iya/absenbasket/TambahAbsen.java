@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,9 +27,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import android.os.AsyncTask;
+
+import com.google.gson.Gson;
 
 public class TambahAbsen extends AppCompatActivity {
-    private List<Anggota> anggotaList = new ArrayList<>();
+    public static List<Anggota> anggotaList = new ArrayList<>();
     private RecyclerView recyclerView;
     private AnggotaAdapter aAdapter;
 
@@ -56,6 +61,7 @@ public class TambahAbsen extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         //aAdapter = new AnggotaAdapter(anggotaList);
+        AnggotaAdapter.mode =1 ;
         aAdapter = new AnggotaAdapter(anggotaList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -67,6 +73,7 @@ public class TambahAbsen extends AppCompatActivity {
         //viewku = getApplicationContext();
         url = Konstanta.BASE_URL+"absenbasket/viewMember.php";
         new ViewPlayer().execute();
+
     }
 
     public void prepareAnggotaData(){
@@ -83,9 +90,12 @@ public class TambahAbsen extends AppCompatActivity {
         startActivity(back);
     }
     public void saveButton(View v){
-        Intent save = new Intent(this, History.class);
+//        Intent save = new Intent(this, History.class);
+//
+//        startActivity(save);
+        new tambahAbsen().execute();
 
-        startActivity(save);
+
     }
     public class ViewPlayer extends AsyncTask<String, String, String>
     {
@@ -105,6 +115,8 @@ public class TambahAbsen extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             JSONParser jParser = new JSONParser();
+
+
             JSONObject json = jParser.getJSONFromUrl(url);
             try {
                 success = json.getString("success");
@@ -122,6 +134,9 @@ public class TambahAbsen extends AppCompatActivity {
                         ttl = c.getString("ttl");
                         angkatan = c.getInt("angkatan");
                         Anggota angg = new Anggota(nama,posisi,jk,ttl,angkatan);
+                        angg.id = c.getInt("id");
+                        angg.id_kehadiran = 1;
+                        angg.keterangan = "";
                         anggotaList.add(angg);
                         Log.d("Tiwi", "doInBackground: "+anggotaList.size());
                         //Log.e("ok", " ambil data");
@@ -145,6 +160,65 @@ public class TambahAbsen extends AppCompatActivity {
             if (success.equals("1")) {
                 aAdapter.notifyDataSetChanged();
                 pDialog.dismiss();
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "Username/password salah gan.!!", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+    public class tambahAbsen extends AsyncTask<String, String, String>
+    {
+        ArrayList<HashMap<String, String>> contactList = new
+                ArrayList<HashMap<String, String>>();
+        ProgressDialog pDialog;
+        @Override
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+            pDialog = new ProgressDialog(TambahAbsen.this);
+            pDialog.setMessage("Tunggu Bentar ya...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+        @Override
+        protected String doInBackground(String... arg0) {
+            JSONParser jParser = new JSONParser();
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            Gson gson = new Gson();
+            String data = gson.toJson(anggotaList);
+            Log.d("data",data);
+            params.add(new BasicNameValuePair("absensi", data));
+            String url_tambah = Konstanta.BASE_URL +"absenbasket/tambah_absen.php";
+            Log.d("Tiwi", "doInBackground: "+params.toString());
+            JSONObject json = jParser.makeHttpRequest(url_tambah,"POST",params);
+            try {
+                success = json.getString("success");
+                Log.e("error", "nilai sukses=" + success);
+                //JSONArray hasil = json.getJSONArray("data");
+                if (success.equals("1")) {
+
+
+                } else {
+                    Log.e("erro", "tidak bisa ambil data 0");
+                }
+            } catch (Exception e) {
+
+                Log.e("erro", "tidak bisa ambil data 1");
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+
+            super.onPostExecute(result);
+
+            if (success.equals("1")) {
+                aAdapter.notifyDataSetChanged();
+                pDialog.dismiss();
+
+                Intent save = new Intent(getApplicationContext(),MainMenu.class);
+                startActivity(save);
             } else {
                 Toast.makeText(getApplicationContext(),
                         "Username/password salah gan.!!", Toast.LENGTH_LONG).show();

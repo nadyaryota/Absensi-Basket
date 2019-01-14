@@ -34,7 +34,8 @@
         <activity android:name=".DetailHistory" />
         <activity android:name=".MainMenu" />
         <activity android:name=".ListNamaAnggota" />
-        <activity android:name=".Testing"></activity>
+        <activity android:name=".Testing" />
+        <activity android:name=".DetailAbsen"></activity>
     </application>
 
 </manifest>

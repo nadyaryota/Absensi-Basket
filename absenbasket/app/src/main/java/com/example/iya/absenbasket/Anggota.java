@@ -1,8 +1,10 @@
 package com.example.iya.absenbasket;
 
 public class Anggota {
-    String nama, posisi, jk, ttl;
-    Integer angkatan,id;
+    int id;
+    String nama, posisi, jk, ttl,keterangan;
+    Integer angkatan;
+    int id_kehadiran;
     public Anggota(){
 
     }

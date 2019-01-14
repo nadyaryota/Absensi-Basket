@@ -69,7 +69,7 @@ public class JSONParser {
     public JSONObject makeHttpRequest(String url, String method, List<NameValuePair> params) {
 
         try {
-            if (method == "POST") {
+            if (method.equals("POST") ) {
 
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(url);
@@ -77,7 +77,7 @@ public class JSONParser {
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
-            } else if (method == "GET") {
+            } else if (method.equals("GET")) {
 
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 String paramString = URLEncodedUtils.format(params, "utf-8");
@@ -104,6 +104,7 @@ public class JSONParser {
             }
             is.close();
             json = sb.toString();
+            Log.d("Tiwi", "makeHttpRequest: "+json);
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }

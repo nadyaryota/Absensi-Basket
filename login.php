@@ -15,6 +15,7 @@ while ($data = mysqli_fetch_array($hasil))
 $h['id'] = $data['id'] ;
 $h['username'] = $data['username'] ;
 $h['password'] = $data['password'];
+$h['nama'] = "Dummy Nama";
  array_push($response["login"], $h);
 }
 $response["success"] = "1";

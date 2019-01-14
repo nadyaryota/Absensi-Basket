@@ -14,7 +14,12 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="Senin, 12 Oktober 2018" />
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_height="match_parent"
+        />
     <TextView
         android:id="@+id/txt_detailAbsen"
         android:layout_width="match_parent"
@@ -29,6 +34,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="19dp"
         android:layout_marginEnd="23dp"
+        android:onClick="closeDetailHistory"
         android:text="Close" />
 
 </RelativeLayout>

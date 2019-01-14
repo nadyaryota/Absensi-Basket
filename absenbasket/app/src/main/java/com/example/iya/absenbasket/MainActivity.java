@@ -97,8 +97,11 @@ public class MainActivity extends Activity {
                 if (success.equals("1")) {
                     for (int i = 0; i < hasil.length(); i++) {
                         JSONObject c = hasil.getJSONObject(i);
+                        Log.d("sembarang",c.toString());
                         String nama = c.getString("nama").trim();
                         String username = c.getString("username").trim();
+                        Log.d("sembarang",nama);
+                        Log.d("sembarang",username);
                         Log.e("ok", " ambil data");
                     }
                 } else {
@@ -112,9 +115,9 @@ public class MainActivity extends Activity {
         }
         @Override
         protected void onPostExecute(String result) {
-
             super.onPostExecute(result);
             pDialog.dismiss();
+            Log.d("sembarang",success);
             if (success.equals("1")) {
                 a = new Intent(viewku.getContext(), MainMenu.class);
                 startActivity(a);
