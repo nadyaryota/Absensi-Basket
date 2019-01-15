@@ -182,10 +182,5 @@ public class TambahAnggota extends AppCompatActivity {
         }
     }
 
-    public void saveTambahAnggota(View v){
-        Intent save = new Intent(this, DaftarAnggota.class);
 
-        startActivity(save);
-        finish();
-    }
 }
